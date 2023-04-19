@@ -1,11 +1,11 @@
-#GitHub Actions
+#Github_Actions
 name: Test Project
 on:
-  push:
-    branches:
-      - main
+    push:
+        branches:
+            - main
 jobs:
-    test:
+    checkout-code:
         runs-on: ubuntu-latest
         steps:
             - name: Get Code
@@ -18,3 +18,18 @@ jobs:
               run: npm install
             - name: Test NodeJS
               run: npm test
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Get Code
+              uses: actions/checkout@v3
+            - name: Install NodeJS
+              uses: actions/setup-node@v3
+              with:
+                node-version: 18
+            - name: Buid NodeJS
+              run: npm install
+            - name: Build Project
+              run: npm run build
+            - name: Deploy
+              run: echo "Deploying..."
