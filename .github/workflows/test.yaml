@@ -3,6 +3,7 @@ on: Push
 jobs:
     test:
         runs-on: ubuntu-latest
+        on: workflow-dispatch
         steps:
             - name: Get Code
               uses: actions/checkout@v3
